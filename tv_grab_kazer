@@ -43,7 +43,7 @@ then
    usage
 fi
  
-KAZERURL="http://www.kazer.org/tvguide.zip?u=dmmktjg56bxa"
+KAZERURL="http://www.kazer.org/tvguide.zip?u=VOTRE_CLEF"
 	
 if [ -z "$KAZERURL" ]
 then
