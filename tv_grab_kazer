@@ -1,0 +1,60 @@
+# Bash script XMLTV grabber from kazer (Fr) website http://www.kazer.org/
+# Script made by Stéphane DUBOIS
+
+#!/bin/sh
+ 
+TMPFILE=""
+
+_stop()
+{
+   if [ -n $TMPFILE ]
+   then
+      rm "$TMPFILE"
+   fi
+   exit 1
+}
+ 
+usage()
+{
+   echo "usage : $0 [--version|--description]"
+   exit 1;
+}
+ 
+if [ $# -gt 1 ]
+then
+   usage
+fi
+ 
+if [ $# -eq 1 ]
+then
+   OPTION=$1
+   
+   if [ "--version" = "$OPTION" ] ; then
+      echo "XMLTV module version 0.1"
+      echo "This is tv_grab_kazer version 0.1, 2012/03/03 23:15:19"
+      exit
+   fi
+ 
+   if [ "--description" = "$OPTION" ] ; then
+        echo "France Kazer"
+        exit
+   fi
+ 
+   usage
+fi
+ 
+KAZERURL="http://www.kazer.org/tvguide.zip?u=dmmktjg56bxa"
+	
+if [ -z "$KAZERURL" ]
+then
+   echo "No valid KAZERURL="<url>" set" >&2
+   exit 1
+fi
+ 
+TMPFILE="/tmp/$$.xmltv.zip"
+ 
+trap "_stop" 1 2 3 15
+ 
+wget -q "$KAZERURL" -O "$TMPFILE"
+unzip -p "$TMPFILE"
+rm "$TMPFILE"
