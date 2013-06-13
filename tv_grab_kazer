@@ -16,7 +16,8 @@ _stop()
    fi
    exit 1
 }
- 
+
+# Commande usage
 usage()
 {
    echo "usage : $0 [--version|--description]"
@@ -45,7 +46,8 @@ then
  
    usage
 fi
- 
+
+# Définition de votre User Hash
 KAZERURL="http://www.kazer.org/tvguide.zip?u=VOTRE_CLEF"
 	
 if [ -z "$KAZERURL" ]
@@ -55,11 +57,14 @@ then
 fi
  
 TMPFILE="/tmp/$$.xmltv.zip"
- 
+
+# Capturer si le script s'arrête
 trap "_stop" 1 2 3 15
- 
+
+# Téléchargement du fichier xmltv.zip
 wget -q "$KAZERURL" -O "$TMPFILE"
 
+# Extraction du zip
 unzip -q "$TMPFILE" -d /tmp/
 
 # Effectue la correspondance entre les catégories de Kazer et celles de TVHeadEnd
@@ -93,5 +98,6 @@ sed -ri 's/<category lang="fr">Variétés/<category lang="fr">Arts \/ Culture \(
 # Affichage du contenu de tvguide.xml
 cat /tmp/tvguide.xml
 
+# Effacement des fichiers temporaires
 rm "$TMPFILE"
 rm /tmp/tvguide.xml
