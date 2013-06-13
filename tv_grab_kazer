@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Script sh récupérateur XMLTV pour http://www.kazer.org/
-# Script original par Stéphane DUBOIS, modifié par inrepublica (admin@inrepublica.fr)
+# Script original par Stéphane DUBOIS, hébergé sur Github: https://github.com/clark17/tv_grab_FR_Kazer/
 
 # Définition des variables
 TMPFILE=""
