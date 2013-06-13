@@ -1,15 +1,18 @@
-# Bash script XMLTV grabber from kazer (Fr) website http://www.kazer.org/
-# Script made by Stéphane DUBOIS
-
 #!/bin/sh
- 
+
+# Script sh récupérateur XMLTV pour http://www.kazer.org/
+# Script original par Stéphane DUBOIS, modifié par inrepublica (admin@inrepublica.fr)
+
+# Définition des variables
 TMPFILE=""
 
+# Commande stop
 _stop()
 {
    if [ -n $TMPFILE ]
    then
       rm "$TMPFILE"
+      rm /tmp/tvguide.xml
    fi
    exit 1
 }
@@ -30,8 +33,8 @@ then
    OPTION=$1
    
    if [ "--version" = "$OPTION" ] ; then
-      echo "XMLTV module version 0.1"
-      echo "This is tv_grab_kazer version 0.1, 2012/03/03 23:15:19"
+      echo "XMLTV module version 0.2"
+      echo "Voici tv_grab_kazer version 0.2, 2013/06/12 20:00:00"
       exit
    fi
  
@@ -56,5 +59,43 @@ TMPFILE="/tmp/$$.xmltv.zip"
 trap "_stop" 1 2 3 15
  
 wget -q "$KAZERURL" -O "$TMPFILE"
+<<<<<<< HEAD
 unzip -p "$TMPFILE"
 rm "$TMPFILE"
+=======
+unzip -q "$TMPFILE" -d /tmp/
+
+# Effectue la correspondance entre les catégories de Kazer et celles de TVHeadEnd
+sed -ri 's/<category lang="fr">Clips/<category lang="fr">Music \/ Ballet \/ Dance/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Concert/<category lang="fr">Music \/ Ballet \/ Dance/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Débat/<category lang="fr">Social \/ Political issues \/ Economics/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Dessin animé/<category lang="fr">Children'"'"'s \/ Youth programmes/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Divertissement/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Documentaire/<category lang="fr">Education \/ Science \/ Factual topics/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Émission/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Feuilleton/<category lang="fr">Movie \/ Drama/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Film/<category lang="fr">Movie \/ Drama/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Interview/<category lang="fr">News \/ Current affairs/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Jeu/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Jeunesse/<category lang="fr">Children'"'"'s \/ Youth programmes/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Journal/<category lang="fr">News \/ Current affairs/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Loterie/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Magazine/<category lang="fr">Education \/ Science \/ Factual topics/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Loterie/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Météo/<category lang="fr">News \/ Current affairs/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Politique/<category lang="fr">Social \/ Political issues \/ Economics/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Série/<category lang="fr">Movie \/ Drama/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Spectacle/<category lang="fr">Arts \/ Culture \(without music\)/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Sport/<category lang="fr">Sports/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Talk show/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Téléfilm/<category lang="fr">Movie \/ Drama/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Téléréalité/<category lang="fr">Show \/ Game show/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Théâtre/<category lang="fr">Arts \/ Culture \(without music\)/g' /tmp/tvguide.xml
+sed -ri 's/<category lang="fr">Variétés/<category lang="fr">Arts \/ Culture \(without music\)/g' /tmp/tvguide.xml
+
+# Affichage du contenu de tvguide.xml
+cat /tmp/tvguide.xml
+
+rm "$TMPFILE"
+rm /tmp/tvguide.xml
+>>>>>>> Transformation des catégories Kazer -> TVheadend
