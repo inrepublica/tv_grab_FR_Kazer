@@ -11,6 +11,6 @@ Installation
 - Tester le script en le lançant à l'aide de la commande tv_grab_kazer, vous devez voir sur l'écran des données XML.
 - Configurer TVHeadEnd en lui indiquant dans Internal Grabber XMLTV : France Kazer
 
-Installation
-------------
+Installation sur NAS Synology
+-----------------------------
 Un tuto détaillé pour l'intallation sur un NAS Synology DS212j -> http://www.inrepublica.fr/2013/06/11/un-vrai-guide-des-programmes-avec-tvheadend-tnt-fr/
