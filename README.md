@@ -1,7 +1,7 @@
 tv grab FR Kazer
 ================
 
-Il s'agit d'un simple script bash utilisé pour récupérer les infos EPG (guide électronique des programmes) destiné à être transmis vers le logiciel TVHeadEnd.
+Il s'agit d'un simple script sh utilisé pour récupérer les infos EPG (guide électronique des programmes) destiné à être transmis vers le logiciel TVHeadEnd.
 Télécharge les infos EPG via le site http://www.kazer.org
 
 Installation
