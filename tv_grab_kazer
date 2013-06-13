@@ -55,7 +55,8 @@ then
    echo "No valid KAZERURL="<url>" set" >&2
    exit 1
 fi
- 
+
+# Nom du zip avec le PID du shell courant
 TMPFILE="/tmp/$$.xmltv.zip"
 
 # Capturer si le script s'arrête
