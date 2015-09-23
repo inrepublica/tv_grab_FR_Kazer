@@ -13,4 +13,4 @@ Installation
 
 Installation sur NAS Synology
 -----------------------------
-Un tuto détaillé pour l'intallation sur un NAS Synology DS212j -> http://www.inrepublica.fr/2013/06/11/un-vrai-guide-des-programmes-avec-tvheadend-tnt-fr/
+Un tuto détaillé pour l'installation sur un NAS Synology DS212j -> http://www.inrepublica.fr/2013/06/11/un-vrai-guide-des-programmes-avec-tvheadend-tnt-fr/
